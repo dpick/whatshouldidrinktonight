@@ -3,6 +3,7 @@ require 'sinatra'
 require 'config'
 
 configure do
+  set :development
   unit = Unit.first_or_create(:name => 'oz')
   ingre = Ingredient.first_or_create(:name => 'gin', :amount => 1, :unit => unit)
 
