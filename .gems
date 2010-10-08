@@ -1,2 +1,4 @@
 sinatra
 datamapper
+dm-core
+dm-sqlite-adapter
