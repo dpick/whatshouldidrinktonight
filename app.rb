@@ -1,9 +1,10 @@
 require 'rubygems'
 require 'sinatra'
 require 'config'
+require 'dm-core'
+require 'dm-migrations'
 
 configure do
-  set :development
   unit = Unit.first_or_create(:name => 'oz')
   ingre = Ingredient.first_or_create(:name => 'gin', :amount => 1, :unit => unit)
 
