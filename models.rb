@@ -26,3 +26,10 @@ class Unit
 
   belongs_to :ingredient
 end
+
+class Beer
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :name, Text
+end

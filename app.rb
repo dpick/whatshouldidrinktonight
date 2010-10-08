@@ -10,13 +10,16 @@ configure do
   drink = Drink.first_or_create(:name => 'gin and tonic')
   drink.ingredients << ingre
   drink.save
+  
+  Beer.first_or_create(:name => 'fat tire')
 end
 
 get '/' do
-  toReturn = ""
-  Drink.all.each do |drink|
-    toReturn << drink.name + "\n"
-  end
+  all = Drink.all
+  all[rand(all.size)].name
+end
 
-  toReturn
+get '/beer' do
+  all = Beer.all
+  all[rand(all.size)].name
 end
