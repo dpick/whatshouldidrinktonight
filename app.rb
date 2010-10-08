@@ -24,3 +24,16 @@ get '/beer' do
   all = Beer.all
   all[rand(all.size)].name
 end
+
+post '/adddrink' do
+  unit = Unit.first_or_create(:name => params[:unit])
+  ingredient = Ingredient.first_or_create(:name => params[:ingredient], :amount => params[:amount], :unit => unit)
+
+  drink = Drink.first_or_create(:name => params[:drink])
+  drink.ingredients << ingredient
+  drink.save
+end
+
+post '/addbeer' do
+  Beer.first_or_create(:name => params[:beer])
+end
