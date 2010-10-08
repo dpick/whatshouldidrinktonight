@@ -3,7 +3,7 @@ require 'dm-core'
 require 'dm-migrations'
 
 configure do
-  DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://' + Dir.pwd + 'development.db') 
+  DataMapper.setup(:default, ENV['DB_URL'] || 'sqlite3://' + Dir.pwd + '/development.db') 
 end
 
 require 'models'
