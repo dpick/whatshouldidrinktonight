@@ -16,12 +16,16 @@ configure do
 end
 
 get '/' do
-  all = Drink.all
-  all[rand(all.size)].name
+  'pick beer or drink'
 end
 
 get '/beer' do
   all = Beer.all
+  all[rand(all.size)].name
+end
+
+get '/drink' do
+  all = Drink.all
   all[rand(all.size)].name
 end
 
