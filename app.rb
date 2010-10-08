@@ -4,8 +4,7 @@ require 'config'
 
 configure do
   unit = Unit.first_or_create(:name => 'oz')
-  ingre = Ingredient.first_or_create(:name => 'gin', :amount => 1)
-  ingre.unit = unit
+  ingre = Ingredient.first_or_create(:name => 'gin', :amount => 1, :unit => unit)
 
   drink = Drink.first_or_create(:name => 'gin and tonic')
   drink.ingredients << ingre
