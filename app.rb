@@ -16,7 +16,7 @@ configure do
 end
 
 get '/' do
-  'pick beer or drink'
+  'pick <a href=/beer>beer</a> or <a href=/drink>drink</a>'
 end
 
 get '/beer' do
@@ -36,8 +36,10 @@ get '/adddrink/:drink/:ingredient/:amount/:unit' do
   drink = Drink.first_or_create(:name => params[:drink])
   drink.ingredients << ingredient
   drink.save
+  redirect '/drink'
 end
 
 get '/addbeer/:beer' do
   Beer.first_or_create(:name => params[:beer])
+  redirect '/beer'
 end
