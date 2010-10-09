@@ -1,0 +1,11 @@
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+  %body
+    %form{:method => 'post', :action => 'newbeer'}
+      %fieldset
+        %ol
+          %li
+            %label{:for => "Beer"} Beer:
+            %input{:type => 'text', :name=> 'beer', :class => "text"}
+        %input{:type => "submit", :value => "Send", :class => "button"}

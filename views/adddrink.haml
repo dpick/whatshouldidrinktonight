@@ -1,0 +1,20 @@
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+  %body
+    %form{:method => 'post', :action => 'newdrink'}
+      %fieldset
+        %ol
+          %li
+            %label{:for => "Drink"} Drink:
+            %input{:type => 'text', :name=> 'drink', :class => "text"}
+          %li
+            %label{:for => "Ingredient"} Ingredient:
+            %input{:type => 'text', :name => 'ingredient', :class => 'text'}
+          %li
+            %label{:for => "Amount"} Amount:
+            %input{:type => 'number', :name => 'amount', :class => 'number'}
+          %li
+            %label{:for => "Unit"} Unit:
+            %input{:type => 'text', :name => 'amount', :class => 'text'}
+        %input{:type => "submit", :value => "Send", :class => "button"}
