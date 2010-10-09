@@ -1,4 +1,4 @@
 sinatra
 datamapper
 dm-core
-dm-sqlite-adapter
+dm-postgres-adapter
