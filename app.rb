@@ -21,15 +21,15 @@ end
 
 get '/beer' do
   all = Beer.all
-  all[rand(all.size)].name
+  "<h1>#{all[rand(all.size)].name}</h1>"
 end
 
 get '/drink' do
   all = Drink.all
-  all[rand(all.size)].name
+  "<h1>#{all[rand(all.size)].name}</h1>"
 end
 
-get '/adddrink/:drink/:ingredient/:amount/:unit' do
+post '/newdrink' do
   unit = Unit.first_or_create(:name => params[:unit])
   ingredient = Ingredient.first_or_create(:name => params[:ingredient], :amount => params[:amount], :unit => unit)
 
@@ -39,7 +39,15 @@ get '/adddrink/:drink/:ingredient/:amount/:unit' do
   redirect '/drink'
 end
 
-get '/addbeer/:beer' do
+post '/newbeer' do
   Beer.first_or_create(:name => params[:beer])
   redirect '/beer'
+end
+
+get '/adddrink' do
+  haml :adddrink
+end
+
+get '/addbeer' do
+  haml :addbeer
 end
