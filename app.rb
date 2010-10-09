@@ -30,6 +30,7 @@ get '/drink' do
 end
 
 post '/newdrink' do
+  params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize! }.join(' ') }
   unit = Unit.first_or_create(:name => params[:unit])
   ingredient = Ingredient.first_or_create(:name => params[:ingredient], :amount => params[:amount], :unit => unit)
 
@@ -40,6 +41,7 @@ post '/newdrink' do
 end
 
 post '/newbeer' do
+  params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize! }.join(' ') }
   Beer.first_or_create(:name => params[:beer])
   redirect '/beer'
 end
