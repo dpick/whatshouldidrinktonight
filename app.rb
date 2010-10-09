@@ -16,7 +16,7 @@ configure do
 end
 
 get '/' do
-  'pick <a href=/beer>beer</a> or <a href=/drink>drink</a>'
+  'pick <a href=/beer>beer</a> or <a href=/drink>cocktail</a>'
 end
 
 get '/beer' do
