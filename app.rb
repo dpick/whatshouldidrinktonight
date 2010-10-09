@@ -21,12 +21,12 @@ end
 
 get '/beer' do
   all = Beer.all
-  "<h1>#{all[rand(all.size)].name}</h1>"
+  "How about a <br><h1>#{all[rand(all.size)].name}</h1>"
 end
 
 get '/drink' do
   all = Drink.all
-  "<h1>#{all[rand(all.size)].name}</h1>"
+  "How about a <h1>#{all[rand(all.size)].name}</h1>"
 end
 
 post '/newdrink' do
