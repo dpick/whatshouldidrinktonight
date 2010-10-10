@@ -11,7 +11,8 @@ end
 
 get '/beer' do
   all = Beer.all
-  "How about a <br><h1>#{all[rand(all.size)].name}</h1>"
+  @beer = all[rand(all.size)]
+  haml :beer
 end
 
 get '/drink' do
