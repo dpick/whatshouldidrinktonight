@@ -4,17 +4,6 @@ require 'config'
 require 'dm-core'
 require 'dm-migrations'
 
-before do
-  unit = Unit.first_or_create(:name => 'Oz')
-  ingre = Ingredient.first_or_create(:name => 'Gin', :amount => 1, :unit => unit)
-
-  drink = Drink.first_or_create(:name => 'Gin And Tonic')
-  drink.ingredients << ingre
-  drink.save
-  
-  Beer.first_or_create(:name => 'Fat Tire')
-end
-
 get '/' do
   all = Drink.all
   @drink = all[rand(all.size)].name
