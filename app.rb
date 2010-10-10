@@ -5,9 +5,7 @@ require 'dm-core'
 require 'dm-migrations'
 
 get '/' do
-  all = Drink.all
-  @drink = all[rand(all.size)].name
-  haml :index
+  "<a href=/beer>beer</a> or <a href=/drink>cocktail</a>" 
 end
 
 get '/beer' do
