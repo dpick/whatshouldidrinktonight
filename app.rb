@@ -21,9 +21,7 @@ get '/drink' do
 end
 
 post '/newdrink' do
-  pp params
   params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize }.join(' ') }
-  pp params
   unit = Unit.first_or_create(:name => params[:unit])
   ingredient = Ingredient.first_or_create(:name => params[:ingredient], :amount => params[:amount].to_i, :unit => unit)
 
