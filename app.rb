@@ -1,9 +1,14 @@
 require 'rubygems'
 require 'sinatra'
+require 'haml'
 require 'config'
 require 'dm-core'
 require 'dm-migrations'
 require 'pp'
+
+before do
+  params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize }.join(' ') }
+end
 
 get '/' do
   "<a href=/beer>beer</a> or <a href=/drink>cocktail</a>" 
@@ -22,7 +27,6 @@ get '/drink' do
 end
 
 post '/newdrink' do
-  params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize }.join(' ') }
   unit = Unit.first_or_create(:name => params[:unit])
   ingredient = Ingredient.first_or_create(:name => params[:ingredient], :amount => params[:amount].to_f, :unit => unit)
 
@@ -33,7 +37,6 @@ post '/newdrink' do
 end
 
 post '/newbeer' do
-  params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize }.join(' ') }
   Beer.first_or_create(:name => params[:beer])
   redirect '/beer'
 end
