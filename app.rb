@@ -4,19 +4,21 @@ require 'config'
 require 'dm-core'
 require 'dm-migrations'
 
-configure do
-  unit = Unit.first_or_create(:name => 'oz')
-  ingre = Ingredient.first_or_create(:name => 'gin', :amount => 1, :unit => unit)
+before do
+  unit = Unit.first_or_create(:name => 'Oz')
+  ingre = Ingredient.first_or_create(:name => 'Gin', :amount => 1, :unit => unit)
 
-  drink = Drink.first_or_create(:name => 'gin and tonic')
+  drink = Drink.first_or_create(:name => 'Gin And Tonic')
   drink.ingredients << ingre
   drink.save
   
-  Beer.first_or_create(:name => 'fat tire')
+  Beer.first_or_create(:name => 'Fat Tire')
 end
 
 get '/' do
-  'pick <a href=/beer>beer</a> or <a href=/drink>cocktail</a>'
+  all = Drink.all
+  @drink = all[rand(all.size)].name
+  haml :index
 end
 
 get '/beer' do
