@@ -1,0 +1,9 @@
+%html
+  %head
+    %title= @drink.name
+  %body
+    How about a:
+    %h1= @drink.name
+    - @drink.ingredients.each do |ingredient|
+      = "#{ingredient.amount} #{ingredient.unit.name} - #{ingredient.name}"
+      %br
