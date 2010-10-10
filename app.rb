@@ -34,7 +34,7 @@ post '/newdrink' do
 end
 
 post '/newbeer' do
-  params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize! }.join(' ') }
+  params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize }.join(' ') }
   Beer.first_or_create(:name => params[:beer])
   redirect '/beer'
 end
