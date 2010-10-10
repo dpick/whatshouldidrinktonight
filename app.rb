@@ -24,7 +24,7 @@ end
 post '/newdrink' do
   params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize }.join(' ') }
   unit = Unit.first_or_create(:name => params[:unit])
-  ingredient = Ingredient.first_or_create(:name => params[:ingredient], :amount => params[:amount].to_i, :unit => unit)
+  ingredient = Ingredient.first_or_create(:name => params[:ingredient], :amount => params[:amount].to_f, :unit => unit)
 
   drink = Drink.first_or_create(:name => params[:drink])
   drink.ingredients << ingredient
