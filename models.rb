@@ -14,7 +14,7 @@ class Ingredient
   property :name, Text
   property :amount, Float
 
-  has 1,  :unit
+  belongs_to :unit
   belongs_to :drink
 end
 
@@ -24,7 +24,7 @@ class Unit
   property :id, Serial
   property :name, String
 
-  belongs_to :ingredient
+  has n, :ingredients
 end
 
 class Beer

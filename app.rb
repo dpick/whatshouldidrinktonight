@@ -3,6 +3,7 @@ require 'sinatra'
 require 'config'
 require 'dm-core'
 require 'dm-migrations'
+require 'pp'
 
 get '/' do
   "<a href=/beer>beer</a> or <a href=/drink>cocktail</a>" 
@@ -15,13 +16,16 @@ end
 
 get '/drink' do
   all = Drink.all
-  "How about a <h1>#{all[rand(all.size)].name}</h1>"
+  @drink = all[rand(all.size)]
+  haml :drink
 end
 
 post '/newdrink' do
-  params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize! }.join(' ') }
+  pp params
+  params.map { |key, val| params[key] = val.split(' ').map { |w| w.capitalize }.join(' ') }
+  pp params
   unit = Unit.first_or_create(:name => params[:unit])
-  ingredient = Ingredient.first_or_create(:name => params[:ingredient], :amount => params[:amount], :unit => unit)
+  ingredient = Ingredient.first_or_create(:name => params[:ingredient], :amount => params[:amount].to_i, :unit => unit)
 
   drink = Drink.first_or_create(:name => params[:drink])
   drink.ingredients << ingredient
